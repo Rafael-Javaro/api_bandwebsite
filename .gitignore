@@ -1,0 +1,64 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Firebase
+firebase-credentials.json
+firebase-service-account.json
+*-firebase-adminsdk-*.json
+serviceAccountKey.json
+
+# Google Cloud
+google-cloud-credentials.json
+gcp-keyfile.json
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Testing
+.nyc_output/
+
+# Build directory
+dist/
+build/
+
+# Temporary files
+.tmp/
+temp/
+
+# Uploaded files
+uploads/
+public/uploads/
+
+# Image processing cache
+.sharp-cache/
+
+# IDE and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+.directory
+Thumbs.db
