@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const { db } = require('./config/firebase');
 
 // Import routes
 const authRoutes = require('./routes/auth');
@@ -34,6 +35,24 @@ app.use('/api/contact', contactRoutes);
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
+});
+
+// Test Firebase connection
+app.get('/api/test-firebase', async (req, res) => {
+  try {
+    await db.ref('test')
+      .set({
+        test: 'test',
+        timestamp: new Date()
+      })
+      .then(() => {
+        logger.info('Firebase writte test successful');
+      });
+    res.status(200).json({ message: 'Firebase connection successful' });
+  } catch (error) {
+    logger.error('Firebase test error:', error);
+    res.status(500).json({ error: 'Firebase connection failed', details: error.message });
+  }
 });
 
 // Error handling middleware

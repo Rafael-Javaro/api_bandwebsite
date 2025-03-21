@@ -15,7 +15,7 @@ const submitContactForm = async (req, res) => {
     }
     
     // Store contact form submission in database
-    const contactRef = db.collection('contacts').doc();
+    const contactRef = db.ref('contacts');
     await contactRef.set({
       name,
       email,
@@ -30,7 +30,7 @@ const submitContactForm = async (req, res) => {
     // Send email notification to band admin
     try {
       await sendEmail({
-        to: process.env.ADMIN_EMAIL,
+        to: 'rafaeljavaro750@gmail.com',
         subject: `New Contact Form: ${subject || 'Contact Form Submission'}`,
         text: `
           New contact form submission from ${name} (${email})
